@@ -1,3 +1,10 @@
+### 1.1.0 (2024-03-21)
+
+##### New Features
+
+* **B2B-2:**  add B2B-2 feature (bcd610aa)
+* **B2B-1:**  small B2B-1 feature description (e27fd647)
+
 #### 1.0.1 (2024-03-21)
 
 ##### New Features
