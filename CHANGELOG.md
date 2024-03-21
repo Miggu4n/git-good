@@ -1,3 +1,9 @@
+#### 1.1.1 (2024-03-21)
+
+##### Documentation Changes
+
+*  add README.md (1114488d)
+
 ### 1.1.0 (2024-03-21)
 
 ##### New Features
