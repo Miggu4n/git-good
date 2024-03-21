@@ -55,6 +55,8 @@ La struttura dovrebbe simile essere questa:
 
 Da qui si prova a riprodurre l'errore segnalato. Una volta riprodotto, si fanno modifiche al codice per trovare le soluzioni. In questa fase è importante fare commit piccoli e concisi. Spesso si crede che tanti commit sporchino il grafico. In realtà quello che sporca il grafico non sono i troppi commit ma un utilizzo di git da principianti.
 
+Un'altra cosa da evitare è l'utilizzo ossessivo-compulsivo degli stash. Negli stash dovrebbero finire modifiche che non vogliamo nel nostro codice ma che ci fa quasi pensa scartare. Esempio: un piccolo script o del codice che si potrebbe tranquillamente commentare.
+
 ## Testing
 
 Una volta sistemato il problema e testato il tutto in locale, le nostre modifiche si devono unire con la versione più recente del codice in staging.
@@ -92,7 +94,7 @@ _--no-ff_ crea un commit di merge mentre _--ff_ prosegue sulla stessa linea
 ## Rilascio
 
 Deeealer è un progetto scritto in next.js, quindi stack javascript. Per questo motivo installeremo [generate-changelog](https://github.com/lob/generate-changelog) per generare i changelog e il versionamento.
-Questa libreria ci permette di
+Questa libreria ci permette di:
 
 - aggiornare in automatico il CHANGELOG.md
 - creare committare le modifiche al changelog
@@ -106,4 +108,4 @@ Una volta installata la libreria, possiamo rilasciare utilizzando uno dei seguen
 - `yarn release:minor` dove aggiorneremo il numero dedicato alle minor releases (es: 1.x.0)
 - `yarn release:patch` dove aggiorneremo il numero dedicato alle major releases (es: x.0.0)
 
-La libreria farà tutto il necessario e farà automaticamente push.
+La libreria farà tutto il necessario e effettuerà in autonomia il push in remoto.
