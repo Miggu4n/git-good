@@ -19,7 +19,7 @@ Lo sviluppatore prende in carico l'obiettivo e apre il repository del progetto s
 ## Allineamento
 
 Ora bisogna capire da che versione del codice arriva la segnalazione. Se Federica riscontra il problema in fase di testing, bisognerà modificare la versione del codice pubblicata in ambiente di testing.
-Viceversa, se la segnalazione arriva dall'ambiende di produzione (es: un cliente deeealer non riesce ad aggiungere un veicolo al carrello), la versione del codice da testare e fixare è quella di produzione.
+Viceversa, se la segnalazione arriva dall'ambiente di produzione (es: un cliente deeealer non riesce ad aggiungere un veicolo al carrello), la versione del codice da rivedere e sistemare è quella di produzione.
 
 Una volta capito da che versione del codice bisogna partire, si effettua un checkout sul branch dedicato. Prendiamo in considerazione la seconda casistica descritta prima. L'errore proviene da una segnalazione in produzione, quindi ci si allinea al branch main
 
@@ -53,9 +53,9 @@ La struttura dovrebbe simile essere questa:
 >   * main
 > ```
 
-Da qui si prova a riprodurre l'errore segnalato. Una volta riprodotto, si fanno modifiche al codice per trovare le soluzioni. In questa fase è importante fare commit piccoli e concisi. Spesso si crede che tanti commit sporchino il grafico. In realtà quello che sporca il grafico non sono i troppi commit ma un utilizzo di git da principianti.
+Da qui si prova a riprodurre l'errore segnalato. Una volta riprodotto, si fanno modifiche al codice per trovare le soluzioni o per sviluppare una nuova feature. In questa fase è importante fare commit piccoli e concisi. Spesso si crede che tanti commit sporchino il grafico. In realtà quello che sporca il grafico è utilizzo da principianti di git.
 
-Un'altra cosa da evitare è l'utilizzo ossessivo-compulsivo degli stash. Negli stash dovrebbero finire modifiche che non vogliamo nel nostro codice ma che ci fa quasi pensa scartare. Esempio: un piccolo script o del codice che si potrebbe tranquillamente commentare.
+Un'altra cosa da evitare è l'utilizzo ossessivo-compulsivo degli stash. Negli stash dovrebbero finire modifiche che non vogliamo nel nostro codice ma che ci fa pena scartare. Esempio: un piccolo script o del codice che si potrebbe tranquillamente commentare.
 
 ## Testing
 
@@ -70,7 +70,7 @@ il flag _--no-ff_ ci permette di fornire **sempre** un messaggio di merge.
 
 Siccome più avanti utilizzeremo la libreria [generate-changelog](https://www.npmjs.com/package/generate-changelog), questo messaggio dovrebbe essere formattato con una sintassi specifica. Entreremo nel dettaglio più avanti, per ora è sufficiente ricordarsi che quando si uniscono le modifiche di un feature branch in staging sarebbe buona prassi fornire un messaggio di merge.
 
-Il PM ora prova il fix su staging. Se tutto è ok si può passare al prossimo obiettivo assegnato, partendo dal branch di segnalazione, sviluppando le modifiche e unendo le modifiche nel branch di testing.
+Il PM ora prova il fix o la feature su staging. Se tutto è ok si può passare al prossimo obiettivo assegnato, partendo dal branch di segnalazione, sviluppando le modifiche e unendo le stesse nel branch di testing.
 
 ## Pre rilascio
 
@@ -83,6 +83,8 @@ type(category): description [flags]
 ```
 
 > Il motivo di questa sintassi è ben documentato: [generate-changelog docs](https://github.com/lob/generate-changelog#readme)
+>
+> _generate-changelog prende tutti i commit formattati in questo modo. Se durante lo sviluppo di una feature si sistema un bug, si può fare un commit usando la stessa sintassi e questo commit verrà inserito nel changelog. Viceversa, se non vogliamo usare questa sintassi nel commit di merge è possibile farlo._
 
 Ci spostiamo sul branch di produzione e ci prepariamo ad importare le modifiche in staging.
 In questa fase è preferibile effettuare un merge fast-forward. Il motivo di questa differenza è chiaro in questa immagine:
@@ -97,10 +99,9 @@ Deeealer è un progetto scritto in next.js, quindi stack javascript. Per questo 
 Questa libreria ci permette di:
 
 - aggiornare in automatico il CHANGELOG.md
-- creare committare le modifiche al changelog
-- aggiornare la versione nel package.json in modo consistente (gestione major, minor e patches)
+- aggiornare la versione del repository nel package.json in modo consistente (gestione major, minor e patches)
 - creare un commit con messaggio uguale alla versione del package.json appena aggiornato (es: v1.2.7)
-- create un tag con valore uguale alla versione pubblicata. I tag sono molto utili nel caso in cui si rende necessario un rollback
+- create un tag con valore uguale alla versione pubblicata. I tag sono molto utili nel caso in cui sia necessario un rollback
 
 Una volta installata la libreria, possiamo rilasciare utilizzando uno dei seguenti comandi:
 
