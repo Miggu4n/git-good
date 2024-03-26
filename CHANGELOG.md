@@ -1,3 +1,9 @@
+#### 1.1.2 (2024-03-26)
+
+##### Bug Fixes
+
+*  fix git-good file (b636af34)
+
 #### 1.1.1 (2024-03-21)
 
 ##### Documentation Changes
